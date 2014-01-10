@@ -15,52 +15,32 @@ class:  page-team
           </header>
           <div class="content">
             <div class="panel-group" id="accordion">
-              <div class="panel">
-                <div class="wrp-outside">
-                  <figure>
-                    <img src="/img/eq.jpg" alt="Eduardo Roca"/>
-                    <figcaption><a href="#">linkedin</a>
-                  </figure>
-                  <div class="outside">
-                    <h3>Eduardo Roca</h3>
-                    <h4>Socio Fundador</h4>
-                    <p>Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello.</p>
+              {% for member in site.data.team %}
+                <div class="panel">
+                  <div class="wrp-outside">
+                    <figure>
+                      <img src="/img/team/{{ member.id }}.jpg" alt="{{ member.name }}"/>
+                      {% if member.linkedin %}
+                        <figcaption><a href="http://www.linkedin.com/in/{{ member.linkedin }}">linkedin</a></figcaption>
+                      {% endif %}
+                    </figure>
+                    <div class="outside">
+                      <h3>{{ member.name }}</h3>
+                      <h4>{{ member.title }}</h4>
+                      <p>{{ member.background_summary }}</p>
+                    </div>
                   </div>
-                </div>
-                <div id="collapse-1" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello. No estaba muy bien con las heridas que don Belianís daba y recebía, porque se imaginaba que, por grandes maestros que le hubiesen curado, no dejaría de tener el rostro y todo el cuerpo lleno de cicatrices y señales. Pero, con todo, alababa en su autor aquel acabar su libro con la promesa de aquella inacabable aventura, y muchas veces le vino deseo de tomar la pluma y dalle fin al pie de la letra, como allí se promete; y sin duda alguna lo hiciera, y aun saliera con ello, si otros mayores y continuos pensamientos no se lo estorbaran.
+                  <div id="collapse-{{ member.id }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      {{ member.background }}
+                    </div>
                   </div>
+                  <button type="button" data-parent="#accordion" data-toggle="collapse" data-target="#collapse-{{ member.id }}" class="collapsed">
+                    <span class="span-in">Ver más</span>
+                    <span class="span-coll">Cerrar</span>
+                  </button>
                 </div>
-                <button type="button" data-parent="#accordion" data-toggle="collapse" data-target="#collapse-1" class="collapsed">
-                  <span class="span-in">Ver más</span>
-                  <span class="span-coll">Cerrar</span>
-                </button>
-              </div>
-
-              <div class="panel">
-                <div class="wrp-outside">
-                  <figure>
-                    <img src="/img/eq.jpg" alt="Eduardo Roca"/>
-                    <figcaption><a href="#">linkedin</a>
-                  </figure>
-                  <div class="outside">
-                    <h3>Eduardo Roca</h3>
-                    <h4>Socio Fundador</h4>
-                    <p>Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello.</p>
-                  </div>
-                </div>
-                <div id="collapse-2" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello. No estaba muy bien con las heridas que don Belianís daba y recebía, porque se imaginaba que, por grandes maestros que le hubiesen curado, no dejaría de tener el rostro y todo el cuerpo lleno de cicatrices y señales. Pero, con todo, alababa en su autor aquel acabar su libro con la promesa de aquella inacabable aventura, y muchas veces le vino deseo de tomar la pluma y dalle fin al pie de la letra, como allí se promete; y sin duda alguna lo hiciera, y aun saliera con ello, si otros mayores y continuos pensamientos no se lo estorbaran.
-                  </div>
-                </div>
-                <button type="button" data-parent="#accordion" data-toggle="collapse" data-target="#collapse-2" class="collapsed">
-                  <span class="span-in">Ver más</span>
-                  <span class="span-coll">Cerrar</span>
-                </button>
-              </div>
-
+              {% endfor %}
             </div>
           </div>
         </article>
