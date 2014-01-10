@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 
-<body class="{{page.class}}">
+<body class="page-{{page.id}}">
   <div class="body">
     <header id="header" role="banner">
       <div class="container">
@@ -39,9 +39,14 @@
               <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                   <li><a href="/index.html">Inicio</a></li>
-                  <li><a href="/estudio.html">El Estudio</a></li>
-                  <li><a href="/equipo.html">Equipo</a></li>
-                  <li class="active"><a href="/contacto.html">Contacto</a></li>
+                  <li {% if page.id == 'about' %} class="active" {% endif %}>
+                    <a href="/estudio.html">El Estudio</a>
+                  </li>
+                  <li {% if page.id == 'team' %} class="active" {% endif %}>
+                    <a href="/equipo.html">Equipo</a>
+                  </li>
+                  <li {% if page.id == 'contact' %} class="active" {% endif %}>
+                    <a href="/contacto.html">Contacto</a></li>
                   <li>
                     <a href="#" class="current"><span>Español</span></a>
                     <a href="#"><span>English</span></a>
