@@ -1,0 +1,50 @@
+---
+layout: default_en
+title:  "Team"
+id:     team
+---
+
+<div id="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <article class="page">
+          <header>
+            <h2 class="page-title">Team</h2>
+            <h3 class="subtitle">Meet our attorneys in law</h3>
+          </header>
+          <div class="content">
+            <div class="panel-group" id="accordion">
+              {% for member in site.data.team_en %}
+                <div class="panel">
+                  <div class="wrp-outside">
+                    <figure>
+                      <img src="/img/team/{{ member.id }}.jpg" alt="{{ member.name }}"/>
+                      {% if member.linkedin %}
+                        <figcaption><a href="http://www.linkedin.com/in/{{ member.linkedin }}">linkedin</a></figcaption>
+                      {% endif %}
+                    </figure>
+                    <div class="outside">
+                      <h3>{{ member.name }}</h3>
+                      <h4>{{ member.title }}</h4>
+                      <p>{{ member.background_summary }}</p>
+                    </div>
+                  </div>
+                  <div id="collapse-{{ member.id }}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      {{ member.background }}
+                    </div>
+                  </div>
+                  <button type="button" data-parent="#accordion" data-toggle="collapse" data-target="#collapse-{{ member.id }}" class="collapsed">
+                    <span class="span-in">More</span>
+                    <span class="span-coll">Hide</span>
+                  </button>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
